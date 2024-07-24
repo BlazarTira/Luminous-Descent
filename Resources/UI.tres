@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cbsdbgo4ukocd"]
+
+[ext_resource type="FontFile" uid="uid://dpqa578hilrux" path="res://Resources/m5x7.ttf" id="1_6j76w"]
+[ext_resource type="Texture2D" uid="uid://r0eu0pwc5uf" path="res://Assets/UI/ui.png" id="2_4i1yf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iho8d"]
+texture = ExtResource("2_4i1yf")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(192, 0, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n4iq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okql2"]
+texture = ExtResource("2_4i1yf")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcemg"]
+texture = ExtResource("2_4i1yf")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_evso1"]
+texture = ExtResource("2_4i1yf")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(128, 0, 64, 64)
+
+[resource]
+Button/colors/font_pressed_color = Color(0.443137, 0.443137, 0.443137, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_6j76w")
+Button/styles/disabled = SubResource("StyleBoxTexture_iho8d")
+Button/styles/focus = SubResource("StyleBoxEmpty_0n4iq")
+Button/styles/hover = SubResource("StyleBoxTexture_okql2")
+Button/styles/normal = SubResource("StyleBoxTexture_jcemg")
+Button/styles/pressed = SubResource("StyleBoxTexture_evso1")
+RichTextLabel/fonts/normal_font = ExtResource("1_6j76w")

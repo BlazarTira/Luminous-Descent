@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpwqjicjh1uo2"]
+
+[ext_resource type="Texture2D" uid="uid://v1uo1l1fe4tk" path="res://Assets/Items/etheric_dust.png" id="1_ieepw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65xdp"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjlgs"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh605"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sh2k"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwx0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65xdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjlgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh605")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sh2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4ryj"]
+
+[node name="etheric_dust" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wwx0v")
+autoplay = "default"
+frame_progress = 0.561252
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s4ryj")

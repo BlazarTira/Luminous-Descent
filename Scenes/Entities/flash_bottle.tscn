@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://ce4gk1mke7tfr"]
+
+[ext_resource type="Texture2D" uid="uid://blsp7xjecdepk" path="res://Assets/Items/Flash_Bottle.png" id="1_bqhqg"]
+[ext_resource type="Script" path="res://Scripts/Entities/flash_bottle.gd" id="1_u41ra"]
+
+[sub_resource type="Gradient" id="Gradient_ukmhj"]
+offsets = PackedFloat32Array(0.526667, 0.986667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o4ge8"]
+gradient = SubResource("Gradient_ukmhj")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.883178, 0.102804)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kufeq"]
+
+[sub_resource type="Gradient" id="Gradient_uus5e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_umc78"]
+gradient = SubResource("Gradient_uus5e")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.878505, 0.126168)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kiw8"]
+radius = 65.0
+
+[sub_resource type="Animation" id="Animation_q5cfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BottleFlash:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6a0bt"]
+resource_name = "bottle_spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 12.5664]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_hau5m"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BottleFlash:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 25.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lge6t"]
+_data = {
+"RESET": SubResource("Animation_q5cfa"),
+"bottle_spin": SubResource("Animation_6a0bt"),
+"flash": SubResource("Animation_hau5m")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8osu"]
+radius = 12.0416
+
+[node name="Flash_Bottle" type="CharacterBody2D" groups=["object"]]
+collision_layer = 8
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_u41ra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bqhqg")
+hframes = 3
+
+[node name="BottleLight" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = SubResource("GradientTexture2D_o4ge8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kufeq")
+
+[node name="BottleFlash" type="PointLight2D" parent="."]
+energy = 0.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_umc78")
+
+[node name="FlashArea2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlashArea2D"]
+shape = SubResource("CircleShape2D_2kiw8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lge6t")
+}
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_q8osu")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
