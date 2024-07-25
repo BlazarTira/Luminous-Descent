@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://1qiy6riibeli"]
+
+[ext_resource type="Theme" uid="uid://cbsdbgo4ukocd" path="res://Resources/UI.tres" id="1_brci6"]
+[ext_resource type="Texture2D" uid="uid://r0eu0pwc5uf" path="res://Assets/UI/ui.png" id="2_4hokj"]
+[ext_resource type="Script" path="res://Scripts/Options_Menu.gd" id="3_kcv5y"]
+
+[node name="Options_BG" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = -137.0
+offset_right = 257.5
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_brci6")
+texture = ExtResource("2_4hokj")
+region_rect = Rect2(0, 64, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 11
+
+[node name="Options_Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -136.0
+offset_right = 259.5
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_kcv5y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options_Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Grayscale" type="CheckButton" parent="Options_Menu/VBoxContainer"]
+layout_mode = 2
+text = "grayscale"
+
+[connection signal="toggled" from="Options_Menu/VBoxContainer/Grayscale" to="Options_Menu" method="_on_grayscale_toggled"]

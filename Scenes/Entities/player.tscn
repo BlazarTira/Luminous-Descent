@@ -1,8 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://ch87s5erycyj8"]
+[gd_scene load_steps=49 format=3 uid="uid://ch87s5erycyj8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_0uik4"]
 [ext_resource type="Texture2D" uid="uid://dc21prga4g51d" path="res://Assets/Player/Alchemist_Player_Sprite.png" id="2_f4v3w"]
-[ext_resource type="Texture2D" uid="uid://cloq61s1q5yhe" path="res://Assets/Player/flashlight_tex.png" id="3_ib7qm"]
 [ext_resource type="Texture2D" uid="uid://t03141d2njcu" path="res://Assets/Player/Lantern_Light_Tex.png" id="4_sxqui"]
 [ext_resource type="Script" path="res://Scripts/Lantern.gd" id="5_v5o6s"]
 
@@ -403,12 +402,6 @@ shape = SubResource("CapsuleShape2D_jcrwc")
 energy = 1.46
 blend_mode = 2
 texture = SubResource("GradientTexture2D_ae31q")
-
-[node name="Flashlight" type="PointLight2D" parent="."]
-visible = false
-color = Color(1, 1, 1, 0.592157)
-shadow_enabled = true
-texture = ExtResource("3_ib7qm")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.780392, 0.662745, 0.545098, 0.788235)

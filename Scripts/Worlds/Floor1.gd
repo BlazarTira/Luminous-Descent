@@ -6,8 +6,8 @@ const GlowingMushroom = preload("res://Scenes/Materials/glowing_mushroom.tscn")
 const CrystalShard = preload("res://Scenes/Materials/crystal_shard.tscn")
 const EthericDust = preload("res://Scenes/Materials/etheric_dust.tscn")
 
-var borders = Rect2(3, 3, 36, 19)
-var player_spawn_position = Vector2(19, 11)
+var borders = Rect2(1, 1, 72, 72)
+var player_spawn_position = Vector2(22, 35)
 var min_enemy_distance = 5  # Minimum distance from player for enemy spawn
 
 @onready var tileMap = $TileMapWalls
@@ -19,7 +19,7 @@ func _ready():
 func generate_level():
 	var map_dict = {}  # Use a dictionary to ensure unique positions
 	var num_walkers = 3
-	var walker_steps = 250  # Reduced steps per walker to ensure coverage
+	var walker_steps = 2000  # Reduced steps per walker to ensure coverage
 
 	for i in range(num_walkers):
 		var walker_start_position = Vector2(randi() % int(borders.size.x) + borders.position.x, randi() % int(borders.size.y) + borders.position.y)
@@ -33,6 +33,10 @@ func generate_level():
 	
 	# Ensure the player spawn position is carved out
 	var player_spawn = find_valid_spawn_position(player_spawn_position, map)
+	if player_spawn == null:
+		print("Error: No valid spawn position found.")
+		return
+
 	var player = Player.instantiate()
 	add_child(player)
 	player.position = player_spawn * 32
@@ -49,6 +53,10 @@ func generate_level():
 	spawn_materials(map)
 
 func find_valid_spawn_position(spawn_position, carved_positions):
+	# Ensure the spawn_position is within the bounds of the map
+	if not borders.has_point(spawn_position):
+		return null
+
 	# If the spawn_position is carved out, return it
 	if spawn_position in carved_positions:
 		return spawn_position
