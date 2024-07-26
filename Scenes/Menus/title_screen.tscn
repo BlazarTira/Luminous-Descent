@@ -207,7 +207,7 @@ theme = SubResource("Theme_248rr")
 position = Vector2(48, 31)
 sprite_frames = SubResource("SpriteFrames_ljdn7")
 autoplay = "default"
-frame_progress = 0.720942
+frame_progress = 0.133517
 
 [node name="Right_Button" type="Button" parent="CanvasLayer/Color_Select"]
 layout_mode = 1

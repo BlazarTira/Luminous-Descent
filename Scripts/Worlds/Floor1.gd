@@ -1,7 +1,8 @@
 extends Node2D
 
 const Player = preload("res://Scenes/Entities/player.tscn")
-const Enemy1 = preload("res://Scenes/Entities/enemy.tscn")
+const Enemy1 = preload("res://Scenes/Entities/bat.tscn")
+const Enemy2 = preload("res://Scenes/Entities/ghost.tscn")
 const GlowingMushroom = preload("res://Scenes/Materials/glowing_mushroom.tscn")
 const CrystalShard = preload("res://Scenes/Materials/crystal_shard.tscn")
 const EthericDust = preload("res://Scenes/Materials/etheric_dust.tscn")
@@ -78,7 +79,7 @@ func find_valid_spawn_position(spawn_position, carved_positions):
 	return nearest_position
 
 func spawn_enemies(carved_positions, player_position):
-	var enemy_scenes = [Enemy1]
+	var enemy_scenes = [Enemy1, Enemy2]
 	var num_enemies = randi() % 10 + 5  # Randomly spawn between 5 and 15 enemies
 
 	for i in range(num_enemies):

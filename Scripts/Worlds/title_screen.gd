@@ -21,7 +21,7 @@ func _ready():
 
 func _on_play_pressed():
 	Global.selected_color = colors[current_color_index]
-	get_tree().change_scene_to_file("res://Scenes/Worlds/Floor1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Worlds/hub.tscn")
 
 
 func _on_quit_pressed():
