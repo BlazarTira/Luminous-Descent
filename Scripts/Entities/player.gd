@@ -23,6 +23,9 @@ var animations = {
 var direction = Vector2.ZERO
 var last_non_zero_direction = Vector2.DOWN  # Default to down for initial state
 
+func _ready():
+	animated_sprite.modulate = Global.selected_color
+
 func _process(_delta: float):
 	update_animation()
 	if Input.is_action_just_pressed("throw_bottle"):

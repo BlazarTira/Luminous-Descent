@@ -1,10 +1,110 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5724akbpects"]
+[gd_scene load_steps=25 format=3 uid="uid://c5724akbpects"]
 
 [ext_resource type="Texture2D" uid="uid://dhgndwpp62y2w" path="res://Assets/UI/Title_BG.png" id="1_wfjbi"]
 [ext_resource type="Texture2D" uid="uid://c1wr7cbdyvpqs" path="res://Assets/UI/Title.png" id="2_rv18j"]
 [ext_resource type="Script" path="res://Scripts/Worlds/title_screen.gd" id="3_d4y5d"]
 [ext_resource type="Theme" uid="uid://cbsdbgo4ukocd" path="res://Resources/UI.tres" id="4_c7wn2"]
 [ext_resource type="Texture2D" uid="uid://bt5m2preplqng" path="res://Assets/UI/quit_disabled.png" id="5_hc7qd"]
+[ext_resource type="Texture2D" uid="uid://dklisskrfmfch" path="res://Assets/UI/Arrow_Button.png" id="6_fq4sm"]
+[ext_resource type="Texture2D" uid="uid://dc21prga4g51d" path="res://Assets/Player/Alchemist_Player_Sprite.png" id="6_ycoqq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aeeic"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(32, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7f5j"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(0, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mimaf"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(64, 32, 32, 32)
+
+[sub_resource type="Theme" id="Theme_248rr"]
+Button/styles/hover = SubResource("StyleBoxTexture_aeeic")
+Button/styles/normal = SubResource("StyleBoxTexture_x7f5j")
+Button/styles/pressed = SubResource("StyleBoxTexture_mimaf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkcip"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43eb0"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pre6e"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scqhe"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2enc"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1xta"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e3n4"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp2rt"]
+atlas = ExtResource("6_ycoqq")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljdn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkcip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43eb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pre6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scqhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2enc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1xta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e3n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp2rt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbrgr"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tanv8"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3oeuf"]
+texture = ExtResource("6_fq4sm")
+region_rect = Rect2(64, 0, 32, 32)
+
+[sub_resource type="Theme" id="Theme_31iy3"]
+Button/styles/hover = SubResource("StyleBoxTexture_mbrgr")
+Button/styles/normal = SubResource("StyleBoxTexture_tanv8")
+Button/styles/pressed = SubResource("StyleBoxTexture_3oeuf")
 
 [node name="TitleScreen" type="Node2D"]
 
@@ -82,7 +182,51 @@ offset_right = 478.0
 offset_bottom = 227.0
 texture = ExtResource("5_hc7qd")
 
+[node name="Color_Select" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+offset_right = 97.0
+grow_vertical = 0
+
+[node name="Left_Button" type="Button" parent="CanvasLayer/Color_Select"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.0
+offset_right = 30.0
+offset_bottom = 11.0
+grow_vertical = 2
+theme = SubResource("Theme_248rr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Color_Select"]
+position = Vector2(48, 31)
+sprite_frames = SubResource("SpriteFrames_ljdn7")
+autoplay = "default"
+frame_progress = 0.720942
+
+[node name="Right_Button" type="Button" parent="CanvasLayer/Color_Select"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -11.0
+offset_right = -6.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_31iy3")
+
 [connection signal="pressed" from="CanvasLayer/Buttons/Play" to="CanvasLayer/Buttons" method="_on_play_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Buttons/Quit" to="CanvasLayer/Buttons" method="_on_quit_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Buttons/Quit" to="CanvasLayer/Buttons" method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Quit" to="CanvasLayer/Buttons" method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Color_Select/Left_Button" to="CanvasLayer/Buttons" method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Color_Select/Right_Button" to="CanvasLayer/Buttons" method="_on_right_button_pressed"]

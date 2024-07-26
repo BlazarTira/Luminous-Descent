@@ -407,5 +407,5 @@ texture = SubResource("GradientTexture2D_ae31q")
 color = Color(0.780392, 0.662745, 0.545098, 0.788235)
 energy = 2.0
 texture = ExtResource("4_sxqui")
-texture_scale = 1.2
+texture_scale = 0.9
 script = ExtResource("5_v5o6s")
