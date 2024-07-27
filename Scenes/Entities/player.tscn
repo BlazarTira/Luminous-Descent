@@ -1,9 +1,32 @@
-[gd_scene load_steps=49 format=3 uid="uid://ch87s5erycyj8"]
+[gd_scene load_steps=73 format=3 uid="uid://ch87s5erycyj8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_0uik4"]
 [ext_resource type="Texture2D" uid="uid://dc21prga4g51d" path="res://Assets/Player/Alchemist_Player_Sprite.png" id="2_f4v3w"]
 [ext_resource type="Texture2D" uid="uid://t03141d2njcu" path="res://Assets/Player/Lantern_Light_Tex.png" id="4_sxqui"]
-[ext_resource type="Script" path="res://Scripts/Lantern.gd" id="5_v5o6s"]
+[ext_resource type="Script" path="res://Scripts/Entities/Lantern.gd" id="4_ukrt7"]
+[ext_resource type="Script" path="res://Scripts/Menus/ui.gd" id="5_5rewl"]
+[ext_resource type="PackedScene" uid="uid://bvwpaxgjvunxm" path="res://Scenes/Menus/inventory.tscn" id="5_leiqk"]
+[ext_resource type="Texture2D" uid="uid://bvjfk27d4kmc3" path="res://Assets/Player/health_bar_back.png" id="7_oxkxl"]
+[ext_resource type="Texture2D" uid="uid://cquhu66dxpel2" path="res://Assets/Player/health_bar_frames/health_bar1.png" id="8_0wwcs"]
+[ext_resource type="Texture2D" uid="uid://j8vopr3apj0s" path="res://Assets/Player/health_bar_frames/health_bar2.png" id="9_3s5yi"]
+[ext_resource type="Texture2D" uid="uid://bq5i0pcyisfw3" path="res://Assets/Player/health_bar_frames/health_bar11.png" id="10_kgu24"]
+[ext_resource type="Texture2D" uid="uid://qria1u84qnmc" path="res://Assets/Player/health_bar_frames/health_bar12.png" id="11_0idnq"]
+[ext_resource type="Texture2D" uid="uid://bsmsakbhnpmal" path="res://Assets/Player/health_bar_frames/health_bar13.png" id="12_yqj6f"]
+[ext_resource type="Texture2D" uid="uid://dswgfl6di2to0" path="res://Assets/Player/health_bar_frames/health_bar14.png" id="13_44yv0"]
+[ext_resource type="Texture2D" uid="uid://b4k6keckmv71i" path="res://Assets/Player/health_bar_frames/health_bar15.png" id="14_av8xt"]
+[ext_resource type="Texture2D" uid="uid://bfdjtek2b4obv" path="res://Assets/Player/health_bar_frames/health_bar16.png" id="15_m18u6"]
+[ext_resource type="Texture2D" uid="uid://dqnu0xvefyuu8" path="res://Assets/Player/health_bar_frames/health_bar17.png" id="16_g1hve"]
+[ext_resource type="Texture2D" uid="uid://c332vyfi2pss2" path="res://Assets/Player/health_bar_frames/health_bar18.png" id="17_m06hv"]
+[ext_resource type="Texture2D" uid="uid://brdkr7ooecsgb" path="res://Assets/Player/health_bar_frames/health_bar19.png" id="18_mxuqt"]
+[ext_resource type="Texture2D" uid="uid://c7vgbr15g3k4w" path="res://Assets/Player/health_bar_frames/health_bar20.png" id="19_kdsrj"]
+[ext_resource type="Texture2D" uid="uid://k43w7gf8d8l8" path="res://Assets/Player/health_bar_frames/health_bar3.png" id="20_ubyyl"]
+[ext_resource type="Texture2D" uid="uid://b21u51ofb8wig" path="res://Assets/Player/health_bar_frames/health_bar4.png" id="21_w5d7q"]
+[ext_resource type="Texture2D" uid="uid://bl8qeln50h8t1" path="res://Assets/Player/health_bar_frames/health_bar5.png" id="22_t4nqh"]
+[ext_resource type="Texture2D" uid="uid://c51pp0wsl66xi" path="res://Assets/Player/health_bar_frames/health_bar6.png" id="23_khhni"]
+[ext_resource type="Texture2D" uid="uid://cugnlunxi03oq" path="res://Assets/Player/health_bar_frames/health_bar7.png" id="24_h1wur"]
+[ext_resource type="Texture2D" uid="uid://pm3hkq2jq7q" path="res://Assets/Player/health_bar_frames/health_bar8.png" id="25_xhxeh"]
+[ext_resource type="Texture2D" uid="uid://csky077ekbw7v" path="res://Assets/Player/health_bar_frames/health_bar9.png" id="26_5xq53"]
+[ext_resource type="Texture2D" uid="uid://b6ywup7kutcwn" path="res://Assets/Player/health_bar_frames/health_bar10.png" id="27_2ic5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkncl"]
 atlas = ExtResource("2_f4v3w")
@@ -382,6 +405,49 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.873832, 0.163551)
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_106ba"]
+frames = 20
+frame_0/texture = ExtResource("8_0wwcs")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("9_3s5yi")
+frame_1/duration = 2.0
+frame_2/texture = ExtResource("20_ubyyl")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("21_w5d7q")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("22_t4nqh")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("23_khhni")
+frame_5/duration = 0.2
+frame_6/texture = ExtResource("24_h1wur")
+frame_6/duration = 0.2
+frame_7/texture = ExtResource("25_xhxeh")
+frame_7/duration = 0.2
+frame_8/texture = ExtResource("26_5xq53")
+frame_8/duration = 0.2
+frame_9/texture = ExtResource("27_2ic5o")
+frame_9/duration = 0.2
+frame_10/texture = ExtResource("10_kgu24")
+frame_10/duration = 0.2
+frame_11/texture = ExtResource("11_0idnq")
+frame_11/duration = 0.2
+frame_12/texture = ExtResource("12_yqj6f")
+frame_12/duration = 0.2
+frame_13/texture = ExtResource("13_44yv0")
+frame_13/duration = 0.2
+frame_14/texture = ExtResource("14_av8xt")
+frame_14/duration = 0.2
+frame_15/texture = ExtResource("15_m18u6")
+frame_15/duration = 0.2
+frame_16/texture = ExtResource("16_g1hve")
+frame_16/duration = 0.2
+frame_17/texture = ExtResource("17_m06hv")
+frame_17/duration = 0.2
+frame_18/texture = ExtResource("18_mxuqt")
+frame_18/duration = 0.2
+frame_19/texture = ExtResource("19_kdsrj")
+frame_19/duration = 0.2
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
@@ -408,4 +474,23 @@ color = Color(0.780392, 0.662745, 0.545098, 0.788235)
 energy = 2.0
 texture = ExtResource("4_sxqui")
 texture_scale = 0.9
-script = ExtResource("5_v5o6s")
+script = ExtResource("4_ukrt7")
+
+[node name="ui" type="CanvasLayer" parent="."]
+script = ExtResource("5_5rewl")
+
+[node name="Inventory" parent="ui" instance=ExtResource("5_leiqk")]
+visible = false
+offset_left = 408.0
+offset_top = 7.0
+offset_right = 448.0
+offset_bottom = 47.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="ui"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 40.0
+max_value = 50.0
+texture_under = ExtResource("7_oxkxl")
+texture_progress = SubResource("AnimatedTexture_106ba")

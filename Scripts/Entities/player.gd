@@ -1,13 +1,16 @@
 extends CharacterBody2D
+class_name Player
 
-@export var speed: int = 200.0
-@export var health: int = 1000000
+@export var speed: int = 200
+@export var player_health = 50
+@export var player_max_health = 50
+@export var throw_force: float = 500
 
 const bottle_scene = preload("res://Scenes/Entities/flash_bottle.tscn")
-@export var throw_force: float = 500.0
 
-
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var inventory = $ui/Inventory
+@onready var health_bar = $ui/HealthBar
 
 var animations = {
 	Vector2.UP: "up",
@@ -24,12 +27,20 @@ var direction = Vector2.ZERO
 var last_non_zero_direction = Vector2.DOWN  # Default to down for initial state
 
 func _ready():
+	health_bar.value = player_max_health
 	animated_sprite.modulate = Global.selected_color
+
 
 func _process(_delta: float):
 	update_animation()
 	if Input.is_action_just_pressed("throw_bottle"):
 		throw_bottle()
+	
+	if Input.is_action_just_pressed("ui_craft"):
+		if inventory.isOpen:
+			inventory.close()
+		else:
+			inventory.open()
 
 func _physics_process(_delta: float):
 	var input_vector = Vector2.ZERO
@@ -104,9 +115,10 @@ func throw_bottle():
 		bottle_instance.throw_bottle(direction)
 
 func take_damage(amount):
-	health -= amount
-	if health <= 0:
+	player_health -= amount
+	health_bar.value = player_health
+	if player_health <= 0:
 		die()
 
 func die():
-	queue_free()
+	get_tree().paused = true

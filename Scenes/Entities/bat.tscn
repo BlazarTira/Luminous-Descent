@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0f3h53xyjbb8"]
+[gd_scene load_steps=10 format=3 uid="uid://b0f3h53xyjbb8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Bat.gd" id="1_q5okg"]
 [ext_resource type="Texture2D" uid="uid://c07588l6l1unq" path="res://Assets/Enemies/Bat_Sprite_Sheet.png" id="2_xhdld"]
@@ -38,6 +38,8 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq4t2"]
 radius = 52.0865
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sly1"]
+
 [node name="Bat" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
@@ -58,4 +60,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_cq4t2")
 
+[node name="Hit Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Area"]
+shape = SubResource("CircleShape2D_5sly1")
+
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Hit Area" to="." method="_on_hit_area_body_entered"]

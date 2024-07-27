@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4gtg4cls2urh"]
+[gd_scene load_steps=9 format=3 uid="uid://c4gtg4cls2urh"]
 
 [ext_resource type="Texture2D" uid="uid://lohedloqhp7s" path="res://Assets/Enemies/Ghost_Sprite_Sheet.png" id="1_8cfxk"]
 [ext_resource type="Script" path="res://Scripts/Entities/ghost.gd" id="1_x1hm5"]
@@ -32,6 +32,8 @@ height = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_nou78"]
 radius = 115.434
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0oq7g"]
+
 [node name="ghost" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
@@ -41,7 +43,7 @@ script = ExtResource("1_x1hm5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mkn5n")
 autoplay = "default"
-frame_progress = 0.713564
+frame_progress = 0.702996
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -54,4 +56,13 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_nou78")
 
+[node name="Hit Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Area"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_0oq7g")
+
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Hit Area" to="." method="_on_hit_area_body_entered"]
