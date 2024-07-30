@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://c176wbpbe62mt"]
+
+[ext_resource type="Texture2D" uid="uid://cxneyfmakvc26" path="res://Assets/Enemies/Slime_Minion_Sheet.png" id="1_810xh"]
+[ext_resource type="Script" path="res://Scripts/Entities/slime_minion.gd" id="1_a258x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffdpr"]
+atlas = ExtResource("1_810xh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebxb"]
+atlas = ExtResource("1_810xh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qn1c"]
+atlas = ExtResource("1_810xh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhqjy"]
+atlas = ExtResource("1_810xh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8271"]
+atlas = ExtResource("1_810xh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55v47"]
+atlas = ExtResource("1_810xh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm72a"]
+atlas = ExtResource("1_810xh")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3dgv"]
+atlas = ExtResource("1_810xh")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfddd"]
+atlas = ExtResource("1_810xh")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5phrm"]
+atlas = ExtResource("1_810xh")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n33i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffdpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qn1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhqjy")
+}],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_h8271")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_55v47")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_hm72a")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_w3dgv")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_kfddd")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_5phrm")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4x2y"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jp4vq"]
+radius = 77.0065
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ev1s8"]
+radius = 7.0
+height = 18.0
+
+[node name="Slime_Minion" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_a258x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_6n33i")
+animation = &"alive"
+autoplay = "alive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_r4x2y")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_jp4vq")
+
+[node name="Hit Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Area"]
+position = Vector2(0, -3)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_ev1s8")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Hit Area" to="." method="_on_hit_area_body_entered"]

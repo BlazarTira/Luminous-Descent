@@ -16,12 +16,13 @@ var direction = Vector2.ZERO
 var chasing = false
 var being_hit = false
 var hurt = false
+var dying = false
 
 func _ready():
 	player = Global.player
 
 func _physics_process(delta):
-	if chasing and player and !being_hit or hurt:
+	if chasing and player and !being_hit and !dying or hurt and !dying:
 		var direction_to_player = (player.position - position).normalized()
 		var random_offset = Vector2(randf() - 0.5, randf() - 0.5) * erratic_factor
 		var target_direction = (direction_to_player + random_offset).normalized()
@@ -78,7 +79,10 @@ func start_knockback():
 	print("Enemy knockback ended.")
 
 func die():
+	dying = true
 	print("Enemy died.")
+	sprite.play("dead")
+	await get_tree().create_timer(0.8).timeout
 	queue_free()
 
 func _on_hit_area_body_entered(body):

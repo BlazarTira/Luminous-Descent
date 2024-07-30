@@ -107,7 +107,6 @@ terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)
 sources/2 = SubResource("TileSetAtlasSource_0kumc")
 
 [node name="World" type="Node2D"]
-y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["world"]]
 tile_set = SubResource("TileSet_8onrx")

@@ -15,7 +15,7 @@ var being_hit = false
 var has_teleported = false
 
 func _ready():
-	player = get_node("/root/Floor1/Player")
+	player = Global.player
 
 func _physics_process(delta):
 	if chasing and player and !being_hit:

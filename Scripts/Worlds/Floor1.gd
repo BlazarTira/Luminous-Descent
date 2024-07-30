@@ -20,7 +20,7 @@ func _ready():
 func generate_level():
 	var map_dict = {}  # Use a dictionary to ensure unique positions
 	var num_walkers = 3
-	var walker_steps = 2000  # Reduced steps per walker to ensure coverage
+	var walker_steps = 3000  # Reduced steps per walker to ensure coverage
 
 	for i in range(num_walkers):
 		var walker_start_position = Vector2(randi() % int(borders.size.x) + borders.position.x, randi() % int(borders.size.y) + borders.position.y)

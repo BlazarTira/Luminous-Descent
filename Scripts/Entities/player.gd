@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: int = 200
-@export var player_health = 50
-@export var player_max_health = 50
+@export var player_health = 1000000
+@export var player_max_health = 1000000
 @export var throw_force: float = 500
 
 const bottle_scene = preload("res://Scenes/Entities/flash_bottle.tscn")
@@ -25,15 +25,17 @@ var animations = {
 
 var direction = Vector2.ZERO
 var last_non_zero_direction = Vector2.DOWN  # Default to down for initial state
+var attacking = false
 
 func _ready():
 	health_bar.value = player_max_health
 	animated_sprite.modulate = Global.selected_color
+	Global.player = self
 
 
 func _process(_delta: float):
 	update_animation()
-	if Input.is_action_just_pressed("throw_bottle"):
+	if Input.is_action_just_pressed("throw_bottle") and !attacking:
 		throw_bottle()
 	
 	if Input.is_action_just_pressed("ui_craft"):
@@ -103,6 +105,7 @@ func get_animation_direction(dir: Vector2) -> String:
 	return ""
 
 func throw_bottle():
+	attacking = true
 	var bottle_instance = bottle_scene.instantiate()
 	get_parent().add_child(bottle_instance)
 	bottle_instance.global_position = global_position
@@ -113,8 +116,11 @@ func throw_bottle():
 	# Call throw_bottle method on the bottle instance
 	if bottle_instance.has_method("throw_bottle"):
 		bottle_instance.throw_bottle(direction)
+		await get_tree().create_timer(0.7).timeout
+		attacking = false
 
 func take_damage(amount):
+	print("ouch")
 	player_health -= amount
 	health_bar.value = player_health
 	if player_health <= 0:
