@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dcnoiitlgjnfa"]
+
+[ext_resource type="Script" path="res://Scripts/Materials/inventory_item.gd" id="1_l2xta"]
+[ext_resource type="Texture2D" uid="uid://cnrkoumn2pmcv" path="res://Assets/Items/Icons/Glowing_Mushroom_Icon.png" id="2_qrc13"]
+
+[resource]
+script = ExtResource("1_l2xta")
+name = "Glowing Mushroom"
+texture = ExtResource("2_qrc13")

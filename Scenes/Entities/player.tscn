@@ -1,11 +1,10 @@
 [gd_scene load_steps=73 format=3 uid="uid://ch87s5erycyj8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_0uik4"]
+[ext_resource type="Resource" uid="uid://rh2xxv4tr6f5" path="res://Resources/Inventory/PlayerInv.tres" id="2_2ffxn"]
 [ext_resource type="Texture2D" uid="uid://dc21prga4g51d" path="res://Assets/Player/Alchemist_Player_Sprite.png" id="2_f4v3w"]
 [ext_resource type="Texture2D" uid="uid://t03141d2njcu" path="res://Assets/Player/Lantern_Light_Tex.png" id="4_sxqui"]
 [ext_resource type="Script" path="res://Scripts/Entities/Lantern.gd" id="4_ukrt7"]
-[ext_resource type="Script" path="res://Scripts/Menus/ui.gd" id="5_5rewl"]
-[ext_resource type="PackedScene" uid="uid://bvwpaxgjvunxm" path="res://Scenes/Menus/inventory.tscn" id="5_leiqk"]
 [ext_resource type="Texture2D" uid="uid://bvjfk27d4kmc3" path="res://Assets/Player/health_bar_back.png" id="7_oxkxl"]
 [ext_resource type="Texture2D" uid="uid://cquhu66dxpel2" path="res://Assets/Player/health_bar_frames/health_bar1.png" id="8_0wwcs"]
 [ext_resource type="Texture2D" uid="uid://j8vopr3apj0s" path="res://Assets/Player/health_bar_frames/health_bar2.png" id="9_3s5yi"]
@@ -27,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://pm3hkq2jq7q" path="res://Assets/Player/health_bar_frames/health_bar8.png" id="25_xhxeh"]
 [ext_resource type="Texture2D" uid="uid://csky077ekbw7v" path="res://Assets/Player/health_bar_frames/health_bar9.png" id="26_5xq53"]
 [ext_resource type="Texture2D" uid="uid://b6ywup7kutcwn" path="res://Assets/Player/health_bar_frames/health_bar10.png" id="27_2ic5o"]
+[ext_resource type="PackedScene" uid="uid://bqq2d8q5b1ltg" path="res://Scenes/Menus/Inv_UI.tscn" id="28_502ea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkncl"]
 atlas = ExtResource("2_f4v3w")
@@ -453,6 +453,7 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_0uik4")
+inv = ExtResource("2_2ffxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uf0ol")
@@ -477,14 +478,6 @@ texture_scale = 0.9
 script = ExtResource("4_ukrt7")
 
 [node name="ui" type="CanvasLayer" parent="."]
-script = ExtResource("5_5rewl")
-
-[node name="Inventory" parent="ui" instance=ExtResource("5_leiqk")]
-visible = false
-offset_left = 408.0
-offset_top = 7.0
-offset_right = 448.0
-offset_bottom = 47.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="ui"]
 offset_left = 8.0
@@ -494,3 +487,5 @@ offset_bottom = 40.0
 max_value = 1e+06
 texture_under = ExtResource("7_oxkxl")
 texture_progress = SubResource("AnimatedTexture_106ba")
+
+[node name="Inv_UI" parent="ui" instance=ExtResource("28_502ea")]

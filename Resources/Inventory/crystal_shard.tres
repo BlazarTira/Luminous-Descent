@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cjanqqwb4lva4"]
+
+[ext_resource type="Script" path="res://Scripts/Materials/inventory_item.gd" id="1_r3a25"]
+[ext_resource type="Texture2D" uid="uid://doshamy7mds8f" path="res://Assets/Items/Icons/Glowing_Crystal_Icon.png" id="2_2jioc"]
+
+[resource]
+script = ExtResource("1_r3a25")
+name = "Crystal Shard"
+texture = ExtResource("2_2jioc")

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=15 format=3 uid="uid://rh2xxv4tr6f5"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/inventory.gd" id="2_4onbp"]
+[ext_resource type="Script" path="res://Scripts/Menus/inv_slot.gd" id="2_vsmtf"]
+
+[sub_resource type="Resource" id="Resource_mtmb6"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_3g6eq"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_g7ta7"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_xkv3k"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_twqck"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ykbme"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ghgat"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_6bbih"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_yjm31"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2ep2t"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_dp2oy"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_oobnx"]
+script = ExtResource("2_vsmtf")
+amount = 0
+
+[resource]
+script = ExtResource("2_4onbp")
+slots = Array[ExtResource("2_vsmtf")]([SubResource("Resource_mtmb6"), SubResource("Resource_3g6eq"), SubResource("Resource_g7ta7"), SubResource("Resource_xkv3k"), SubResource("Resource_twqck"), SubResource("Resource_ykbme"), SubResource("Resource_ghgat"), SubResource("Resource_6bbih"), SubResource("Resource_yjm31"), SubResource("Resource_2ep2t"), SubResource("Resource_dp2oy"), SubResource("Resource_oobnx")])

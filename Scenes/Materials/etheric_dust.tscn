@@ -1,6 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpwqjicjh1uo2"]
+[gd_scene load_steps=23 format=3 uid="uid://dpwqjicjh1uo2"]
 
 [ext_resource type="Texture2D" uid="uid://v1uo1l1fe4tk" path="res://Assets/Items/etheric_dust.png" id="1_ieepw"]
+[ext_resource type="Script" path="res://Scripts/Materials/inWorldMaterials/etheric_dust.gd" id="1_jb65h"]
+[ext_resource type="Texture2D" uid="uid://ib2lgltajg4v" path="res://Assets/UI/Interact_Tip_Sheet.png" id="2_1pdl6"]
+[ext_resource type="Resource" uid="uid://cjj867u6efps" path="res://Resources/Inventory/etheric_dust.tres" id="2_6a4t0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fvhr"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk4wo"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy00r"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j74r7"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7gru"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hokp6"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq2ml"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g5a3"]
+atlas = ExtResource("1_ieepw")
+region = Rect2(224, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65xdp"]
 atlas = ExtResource("1_ieepw")
@@ -21,6 +56,35 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_wwx0v"]
 animations = [{
 "frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7fvhr")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_tk4wo")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_wy00r")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_j74r7")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w7gru")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hokp6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_oq2ml")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_2g5a3")
+}],
+"loop": false,
+"name": &"Picked",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_65xdp")
 }, {
@@ -34,18 +98,63 @@ animations = [{
 "texture": SubResource("AtlasTexture_8sh2k")
 }],
 "loop": true,
-"name": &"default",
+"name": &"inWorld",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4ryj"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh7fc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6v60"]
+atlas = ExtResource("2_1pdl6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhddi"]
+atlas = ExtResource("2_1pdl6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4v54"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_o6v60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhddi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="etheric_dust" type="Area2D"]
+script = ExtResource("1_jb65h")
+item = ExtResource("2_6a4t0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wwx0v")
-autoplay = "default"
-frame_progress = 0.561252
+animation = &"Picked"
+autoplay = "inWorld"
+frame = 1
+frame_progress = 0.617188
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s4ryj")
+disabled = true
+
+[node name="pickable_area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pickable_area"]
+shape = SubResource("CircleShape2D_gh7fc")
+
+[node name="InteractAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_m4v54")
+autoplay = "default"
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]
+[connection signal="body_exited" from="pickable_area" to="." method="_on_pickable_area_body_exited"]

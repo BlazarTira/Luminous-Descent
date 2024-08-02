@@ -1,8 +1,43 @@
-[gd_scene load_steps=16 format=3 uid="uid://dulko81gruu0q"]
+[gd_scene load_steps=31 format=3 uid="uid://dulko81gruu0q"]
 
+[ext_resource type="Script" path="res://Scripts/Materials/inWorldMaterials/crystal_shard.gd" id="1_6qjrb"]
+[ext_resource type="Resource" uid="uid://cjanqqwb4lva4" path="res://Resources/Inventory/crystal_shard.tres" id="2_irbbv"]
 [ext_resource type="Texture2D" uid="uid://c8eh5v4rlwqp4" path="res://Assets/Items/Glowing_Crystal.png" id="2_wfkbu"]
+[ext_resource type="Texture2D" uid="uid://ib2lgltajg4v" path="res://Assets/UI/Interact_Tip_Sheet.png" id="3_8tf2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5i1i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l0ft"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xldcn"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp76d"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5f8"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpk80"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h23ht"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t8ga"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyd7j"]
+atlas = ExtResource("2_wfkbu")
+region = Rect2(224, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06vh0"]
 atlas = ExtResource("2_wfkbu")
@@ -55,6 +90,35 @@ region = Rect2(352, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdqlb"]
 animations = [{
 "frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8l0ft")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xldcn")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_mp76d")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_cw5f8")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gpk80")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_h23ht")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_1t8ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyd7j")
+}],
+"loop": false,
+"name": &"Picked",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_06vh0")
 }, {
@@ -92,16 +156,59 @@ animations = [{
 "texture": SubResource("AtlasTexture_3nbwn")
 }],
 "loop": true,
+"name": &"inWorld",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11bu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6v60"]
+atlas = ExtResource("3_8tf2h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhddi"]
+atlas = ExtResource("3_8tf2h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trxko"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_o6v60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhddi")
+}],
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="crystal_shard" type="Area2D"]
+script = ExtResource("1_6qjrb")
+item = ExtResource("2_irbbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q5i1i")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rdqlb")
+animation = &"Picked"
+autoplay = "inWorld"
+
+[node name="pickable_area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_area"]
+shape = SubResource("CircleShape2D_11bu4")
+
+[node name="InteractAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_trxko")
 autoplay = "default"
-frame_progress = 0.450042
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]
+[connection signal="body_exited" from="pickable_area" to="." method="_on_pickable_area_body_exited"]

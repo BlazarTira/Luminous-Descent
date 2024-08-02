@@ -5,11 +5,11 @@ class_name Player
 @export var player_health = 1000000
 @export var player_max_health = 1000000
 @export var throw_force: float = 500
+@export var inv: Inv
 
 const bottle_scene = preload("res://Scenes/Entities/flash_bottle.tscn")
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var inventory = $ui/Inventory
 @onready var health_bar = $ui/HealthBar
 
 var animations = {
@@ -38,11 +38,6 @@ func _process(_delta: float):
 	if Input.is_action_just_pressed("throw_bottle") and !attacking:
 		throw_bottle()
 	
-	if Input.is_action_just_pressed("ui_craft"):
-		if inventory.isOpen:
-			inventory.close()
-		else:
-			inventory.open()
 
 func _physics_process(_delta: float):
 	var input_vector = Vector2.ZERO
@@ -103,6 +98,9 @@ func get_animation_direction(dir: Vector2) -> String:
 		elif dir.y > 0:
 			return "down"
 	return ""
+
+func collect(item):
+	inv.insert(item)
 
 func throw_bottle():
 	attacking = true
