@@ -7,3 +7,4 @@
 script = ExtResource("1_r3a25")
 name = "Crystal Shard"
 texture = ExtResource("2_2jioc")
+components = Array[ExtResource("1_r3a25")]([null])

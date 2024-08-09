@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://dcthus8v2tqkm"]
+
+[ext_resource type="Resource" uid="uid://cjj867u6efps" path="res://Resources/Inventory/etheric_dust.tres" id="1_ovstr"]
+[ext_resource type="Script" path="res://Scripts/Materials/inventory_item.gd" id="2_x7j32"]
+[ext_resource type="Texture2D" uid="uid://c8aehjj3krc2q" path="res://Assets/Items/Icons/Health_Potion.png" id="3_6ab4y"]
+
+[resource]
+script = ExtResource("2_x7j32")
+name = ""
+texture = ExtResource("3_6ab4y")
+components = Array[ExtResource("2_x7j32")]([ExtResource("1_ovstr")])

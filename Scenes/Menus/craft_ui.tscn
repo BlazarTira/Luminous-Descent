@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5xv7ij5rinjn"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/Inv_UI.gd" id="1_q20dp"]
+[ext_resource type="Texture2D" uid="uid://dr84uokxeoh41" path="res://Assets/UI/Window_NPR.png" id="2_grpex"]
+[ext_resource type="Texture2D" uid="uid://dos5vfk4v5inw" path="res://icon.svg" id="3_n0irm"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_q20dp")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_right = 120.0
+offset_bottom = 91.0
+texture = ExtResource("2_grpex")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="recipe_selector" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="prev_recipe" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/recipe_selector"]
+layout_mode = 2
+text = "<"
+
+[node name="item_display" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/recipe_selector"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_n0irm")
+expand_mode = 2
+
+[node name="next_recipe" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/recipe_selector"]
+layout_mode = 2
+text = ">"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CRAFT ITEM"

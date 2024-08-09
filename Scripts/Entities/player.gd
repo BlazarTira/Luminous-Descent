@@ -8,6 +8,7 @@ class_name Player
 @export var inv: Inv
 
 const bottle_scene = preload("res://Scenes/Entities/flash_bottle.tscn")
+const potion = preload("res://Resources/Inventory/etheric_dust.tres")
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $ui/HealthBar
@@ -31,27 +32,20 @@ func _ready():
 	health_bar.value = player_max_health
 	animated_sprite.modulate = Global.selected_color
 	Global.player = self
-
+	
+	collect(potion)
 
 func _process(_delta: float):
 	update_animation()
+	
+func _unhandled_input(event):
+	#You might wanna check for input in this method instead of process, as it will not execute when you click on UI
 	if Input.is_action_just_pressed("throw_bottle") and !attacking:
 		throw_bottle()
 	
 
 func _physics_process(_delta: float):
-	var input_vector = Vector2.ZERO
-
-	if Input.is_action_pressed("up"):
-		input_vector.y -= 1
-	if Input.is_action_pressed("down"):
-		input_vector.y += 1
-	if Input.is_action_pressed("left"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("right"):
-		input_vector.x += 1
-
-	input_vector = input_vector.normalized()
+	var input_vector = Input.get_vector("left", "right", "up", "down").normalized()
 	velocity = input_vector * speed
 
 	if input_vector != Vector2.ZERO:
@@ -101,6 +95,9 @@ func get_animation_direction(dir: Vector2) -> String:
 
 func collect(item):
 	inv.insert(item)
+	
+func extract(item):
+	inv.extract(item);
 
 func throw_bottle():
 	attacking = true
