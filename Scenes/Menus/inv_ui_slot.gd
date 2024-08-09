@@ -5,6 +5,7 @@ extends Panel
 
 func update(slot: InvSlot):
 	if !slot.item || slot.amount <= 0:
+		slot.item = null;
 		item_visual.visible = false
 		amount_text.visible = false
 	else:
