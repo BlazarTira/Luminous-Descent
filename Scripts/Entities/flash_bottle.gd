@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var throw_force: float = 150.0
-@export var flash_damage: int = 1000
+@export var flash_damage: int = 10
 
 @onready var bottle_sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer

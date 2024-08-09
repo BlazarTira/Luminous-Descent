@@ -1,7 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://cgd7byiavo73u"]
+[gd_scene load_steps=76 format=3 uid="uid://cgd7byiavo73u"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Slime_Boss.gd" id="1_4ovee"]
 [ext_resource type="Texture2D" uid="uid://bmv43x2vbxf01" path="res://Assets/Enemies/Slime_Boss_Sheet.png" id="2_b20cl"]
+[ext_resource type="Texture2D" uid="uid://c1g4xnfba6naq" path="res://Assets/Enemies/Slime_Boss_Health_Bar_Under.png" id="3_qbf62"]
 [ext_resource type="Texture2D" uid="uid://bbd306ky8702m" path="res://Assets/Enemies/Slime_Boss_Health_Bar.png" id="3_yy4ro"]
 [ext_resource type="Texture2D" uid="uid://bnvotw8yfxu6" path="res://Assets/Enemies/Slime_Boss_Health_Bar_Progress.png" id="4_ybjxs"]
 [ext_resource type="Texture2D" uid="uid://dmpmrtlceh75w" path="res://Assets/Enemies/Slime_Boss_Shockwave_Sheet.png" id="5_sbr1x"]
@@ -529,12 +530,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -218.5
-offset_top = -73.0
-offset_right = 218.5
+offset_left = -283.0
+offset_top = -40.0
+offset_right = 154.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 0
 max_value = 30.0
+texture_under = ExtResource("3_qbf62")
 texture_over = ExtResource("3_yy4ro")
 texture_progress = ExtResource("4_ybjxs")
 
