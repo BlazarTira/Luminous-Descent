@@ -25,6 +25,10 @@ func _on_item_changed(item: InvItem):
 	craftable_result_visual.texture = item.texture;
 	
 func _craft_item():
-	#remove the items from the player inventory before you actually add it!
-	var curr_craft = craft_controller.get_current_craft();	
-	Global.player.collect(curr_craft)
+	var curr_craft = craft_controller.get_current_craft();
+	if Global.player.inv.contains(curr_craft.components):
+		for item in curr_craft.components:
+			Global.player.extract(item)
+		Global.player.collect(curr_craft)
+		print("Crafting item!")
+	print("Item couldn't be crafted.")
