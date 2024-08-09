@@ -8,7 +8,6 @@ class_name Player
 @export var inv: Inv
 
 const bottle_scene = preload("res://Scenes/Entities/flash_bottle.tscn")
-const potion = preload("res://Resources/Inventory/etheric_dust.tres")
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $ui/HealthBar
@@ -32,8 +31,6 @@ func _ready():
 	health_bar.value = player_max_health
 	animated_sprite.modulate = Global.selected_color
 	Global.player = self
-	
-	collect(potion)
 
 func _process(_delta: float):
 	update_animation()
