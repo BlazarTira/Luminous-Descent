@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5xv7ij5rinjn"]
+[gd_scene load_steps=5 format=3 uid="uid://b5xv7ij5rinjn"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/Inv_UI.gd" id="1_q20dp"]
+[ext_resource type="Theme" uid="uid://cbsdbgo4ukocd" path="res://Resources/UI.tres" id="1_44sn1"]
 [ext_resource type="Texture2D" uid="uid://dr84uokxeoh41" path="res://Assets/UI/Window_NPR.png" id="2_grpex"]
+[ext_resource type="Script" path="res://Scripts/Menus/craft_ui.gd" id="2_neikx"]
 [ext_resource type="Texture2D" uid="uid://dos5vfk4v5inw" path="res://icon.svg" id="3_n0irm"]
 
-[node name="Inv_UI" type="Control"]
+[node name="craft_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_q20dp")
+theme = ExtResource("1_44sn1")
+script = ExtResource("2_neikx")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-offset_right = 120.0
-offset_bottom = 91.0
+offset_right = 160.0
+offset_bottom = 128.0
 texture = ExtResource("2_grpex")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -40,6 +42,7 @@ alignment = 1
 
 [node name="prev_recipe" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/recipe_selector"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 0
 text = "<"
 
 [node name="item_display" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/recipe_selector"]

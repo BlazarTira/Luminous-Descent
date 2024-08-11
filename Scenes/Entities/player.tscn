@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://ch87s5erycyj8"]
+[gd_scene load_steps=76 format=3 uid="uid://ch87s5erycyj8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_0uik4"]
 [ext_resource type="Resource" uid="uid://rh2xxv4tr6f5" path="res://Resources/Inventory/PlayerInv.tres" id="2_2ffxn"]
@@ -27,10 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://csky077ekbw7v" path="res://Assets/Player/health_bar_frames/health_bar9.png" id="26_5xq53"]
 [ext_resource type="Texture2D" uid="uid://b6ywup7kutcwn" path="res://Assets/Player/health_bar_frames/health_bar10.png" id="27_2ic5o"]
 [ext_resource type="PackedScene" uid="uid://bqq2d8q5b1ltg" path="res://Scenes/Menus/Inv_UI.tscn" id="28_502ea"]
-[ext_resource type="PackedScene" uid="uid://b5xv7ij5rinjn" path="res://Scenes/Menus/craft_ui.tscn" id="28_tn7ot"]
-[ext_resource type="Script" path="res://Scripts/Menus/craft.gd" id="29_3p6hs"]
-[ext_resource type="Script" path="res://Scripts/Menus/craft_ui.gd" id="29_aefch"]
-[ext_resource type="Resource" uid="uid://dcthus8v2tqkm" path="res://Resources/Inventory/potion.tres" id="31_g4rsa"]
+[ext_resource type="PackedScene" uid="uid://b5xv7ij5rinjn" path="res://Scenes/Menus/craft_ui.tscn" id="28_vyq8o"]
+[ext_resource type="Script" path="res://Scripts/Menus/craft.gd" id="29_la1xv"]
+[ext_resource type="Resource" uid="uid://dcthus8v2tqkm" path="res://Resources/Inventory/potion.tres" id="30_x6666"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkncl"]
 atlas = ExtResource("2_f4v3w")
@@ -494,15 +493,9 @@ texture_progress = SubResource("AnimatedTexture_106ba")
 
 [node name="Inv_UI" parent="ui" instance=ExtResource("28_502ea")]
 
-[node name="CRAFT_UI" parent="ui" node_paths=PackedStringArray("craft_controller") instance=ExtResource("28_tn7ot")]
-offset_left = 451.0
-offset_top = 163.0
-offset_right = 451.0
-offset_bottom = 163.0
-script = ExtResource("29_aefch")
+[node name="craft_ui" parent="ui" node_paths=PackedStringArray("craft_controller") instance=ExtResource("28_vyq8o")]
 craft_controller = NodePath("craft_controller")
-default_craft_index = 0
 
-[node name="craft_controller" type="Node" parent="ui/CRAFT_UI"]
-script = ExtResource("29_3p6hs")
-craftable_items = Array[Resource("res://Scripts/Materials/inventory_item.gd")]([ExtResource("31_g4rsa")])
+[node name="craft_controller" type="Node" parent="ui/craft_ui"]
+script = ExtResource("29_la1xv")
+craftable_items = Array[Resource("res://Scripts/Materials/inventory_item.gd")]([ExtResource("30_x6666")])
