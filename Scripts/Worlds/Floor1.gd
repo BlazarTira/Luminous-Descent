@@ -52,6 +52,9 @@ func generate_level():
 	
 	spawn_enemies(map, player.position)
 	spawn_materials(map)
+	
+	var d = GridHelper.find_nxn_grids(map_dict, 3)
+	print(d)
 
 func find_valid_spawn_position(spawn_position, carved_positions):
 	# Ensure the spawn_position is within the bounds of the map
