@@ -42,3 +42,7 @@ static func find_nxn_grids(point_dict: Dictionary, n: int) -> Array:
 			grids.append(grid)
 
 	return grids
+	
+static func get_random_center_position(data: Array):
+	var rnd_location = data.pick_random();
+	return rnd_location[0] + rnd_location[rnd_location.size() - 1] / 2;

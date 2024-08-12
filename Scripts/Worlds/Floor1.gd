@@ -6,6 +6,7 @@ const Enemy2 = preload("res://Scenes/Entities/ghost.tscn")
 const GlowingMushroom = preload("res://Scenes/Materials/glowing_mushroom.tscn")
 const CrystalShard = preload("res://Scenes/Materials/crystal_shard.tscn")
 const EthericDust = preload("res://Scenes/Materials/etheric_dust.tscn")
+const Shop = preload("res://Scenes/Entities/shop.tscn")
 
 var borders = Rect2(1, 1, 72, 72)
 var player_spawn_position = Vector2(22, 35)
@@ -53,8 +54,10 @@ func generate_level():
 	spawn_enemies(map, player.position)
 	spawn_materials(map)
 	
-	var d = GridHelper.find_nxn_grids(map_dict, 3)
-	print(d)
+	for i in range(5):
+		var shop = Shop.instantiate()
+		add_child(shop)
+		shop.global_position = GridHelper.get_random_center_position(GridHelper.find_nxn_grids(map_dict, 3))
 
 func find_valid_spawn_position(spawn_position, carved_positions):
 	# Ensure the spawn_position is within the bounds of the map
