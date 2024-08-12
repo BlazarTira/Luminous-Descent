@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: int = 200
-@export var player_health = 1000000
-@export var player_max_health = 1000000
+@export var player_health = 100
+@export var player_max_health = 100
 @export var throw_force: float = 500
 @export var inv: Inv
 

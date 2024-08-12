@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ch87s5erycyj8" path="res://Scenes/Entities/player.tscn" id="1_1cpb0"]
 [ext_resource type="Texture2D" uid="uid://x5vtf5budbiw" path="res://Assets/Worlds/testfloor.png" id="2_l1mu7"]
-[ext_resource type="PackedScene" uid="uid://cgd7byiavo73u" path="res://Scenes/Entities/slime_boss.tscn" id="3_o1dq6"]
+[ext_resource type="PackedScene" uid="uid://crpdbsh247745" path="res://Scenes/Entities/shop.tscn" id="4_o23ed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0kumc"]
 texture = ExtResource("2_l1mu7")
@@ -120,5 +120,11 @@ layer_1/tile_data = PackedInt32Array(1048601, 131072, 2, 65561, 131072, 1, 13109
 [node name="Player" parent="." instance=ExtResource("1_1cpb0")]
 position = Vector2(301, 287)
 
-[node name="Slime_Boss" parent="." instance=ExtResource("3_o1dq6")]
-position = Vector2(672, 224)
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Shop" parent="." instance=ExtResource("4_o23ed")]
+offset_left = 640.0
+offset_top = 224.0
+offset_right = 680.0
+offset_bottom = 264.0

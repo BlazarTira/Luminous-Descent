@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c51pp0wsl66xi"
-path="res://.godot/imported/health_bar6.png-46581ace49357446c613320ebadf3a84.ctex"
+uid="uid://sd6vnssfod7b"
+path="res://.godot/imported/shop_sprite.png-6149d133934e14cecf73f8f8f20f6ba6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/health_bar_frames/health_bar6.png"
-dest_files=["res://.godot/imported/health_bar6.png-46581ace49357446c613320ebadf3a84.ctex"]
+source_file="res://Assets/NPCs/shop_sprite.png"
+dest_files=["res://.godot/imported/shop_sprite.png-6149d133934e14cecf73f8f8f20f6ba6.ctex"]
 
 [params]
 

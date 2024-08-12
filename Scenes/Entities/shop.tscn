@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://crpdbsh247745"]
+
+[ext_resource type="Texture2D" uid="uid://sd6vnssfod7b" path="res://Assets/NPCs/shop_sprite.png" id="1_ko6rm"]
+
+[sub_resource type="Gradient" id="Gradient_sc77b"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y5vnc"]
+gradient = SubResource("Gradient_sc77b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.859813, 0.116822)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ko6rm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-16, -21)
+energy = 0.5
+texture = SubResource("GradientTexture2D_y5vnc")
+texture_scale = 1.97
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(34, 14)
+energy = 0.5
+texture = SubResource("GradientTexture2D_y5vnc")
+texture_scale = 1.97

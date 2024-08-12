@@ -3,7 +3,7 @@ class_name GridHelper extends Node
 # Sort the dictionary of Vector2 keys.
 static func sort_vector2_keys(dict: Dictionary) -> Array:
 	var keys = dict.keys()
-	keys.sort_custom(Vector2SortHelper)
+	keys.sort_custom(GridHelper.Vector2SortHelper)
 	return keys
 
 # Helper function for sorting Vector2 keys
