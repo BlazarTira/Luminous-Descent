@@ -124,7 +124,3 @@ position = Vector2(301, 287)
 color = Color(0, 0, 0, 1)
 
 [node name="Shop" parent="." instance=ExtResource("4_o23ed")]
-offset_left = 640.0
-offset_top = 224.0
-offset_right = 680.0
-offset_bottom = 264.0

@@ -54,10 +54,17 @@ func generate_level():
 	spawn_enemies(map, player.position)
 	spawn_materials(map)
 	
+	var grid_elements = GridHelper.find_nxn_grids(map_dict, 3)
 	for i in range(5):
 		var shop = Shop.instantiate()
 		add_child(shop)
-		shop.global_position = GridHelper.get_random_center_position(GridHelper.find_nxn_grids(map_dict, 3))
+		var selected_position = GridHelper.get_random_center_position(grid_elements)
+		
+		#prevent the same thing generating twice
+		grid_elements.erase(selected_position)
+		
+		#set the position
+		shop.global_position = selected_position * 32
 
 func find_valid_spawn_position(spawn_position, carved_positions):
 	# Ensure the spawn_position is within the bounds of the map
