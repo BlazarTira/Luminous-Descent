@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var flash_light = $BottleFlash
 @onready var flash_area = $FlashArea2D
+@onready var lifetime = $Lifetime
 
 var is_flashing = false
 
@@ -39,3 +40,7 @@ func check_flash_damage():
 	for body in bodies:
 		if body.is_in_group("enemy"):
 			body.take_damage(flash_damage)
+
+
+func _on_lifetime_timeout():
+	flash()

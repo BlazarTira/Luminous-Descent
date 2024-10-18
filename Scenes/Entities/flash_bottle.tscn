@@ -29,7 +29,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.878505, 0.126168)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kiw8"]
-radius = 65.0
+radius = 22.0
 
 [sub_resource type="Animation" id="Animation_q5cfa"]
 length = 0.001
@@ -144,9 +144,9 @@ shape = SubResource("CircleShape2D_kufeq")
 energy = 0.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_umc78")
+texture_scale = 0.5
 
 [node name="FlashArea2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 4
 
@@ -165,4 +165,10 @@ collision_mask = 13
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_q8osu")
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
